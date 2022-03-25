@@ -1,5 +1,6 @@
 package org.sam.mines.address.persistence;
 
+import org.sam.mines.address.model.DoctorEntity;
 import org.sam.mines.address.model.TownEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

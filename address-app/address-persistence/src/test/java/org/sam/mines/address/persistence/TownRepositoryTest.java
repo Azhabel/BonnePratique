@@ -3,6 +3,7 @@ package org.sam.mines.address.persistence;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.sam.mines.address.model.AddressEntity;
+import org.sam.mines.address.model.ContaminationEntity;
 import org.sam.mines.address.model.TownEntity;
 import org.sam.mines.address.persistence.config.PersistenceTestConfig;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,10 @@ class TownRepositoryTest {
     private TownRepository townRepository;
 
     @Autowired
-    private DotorRepository doctorRepository;
+    private DoctorRepository doctorRepository;
 
     @Autowired
-    private ContaminationEntity ContaminationRepository;
+    private ContaminationRepository ContaminationRepository;
 
     @Test
     public void FindAllContaminate() {
@@ -43,7 +44,7 @@ class TownRepositoryTest {
     }
 
     public void FindallContaminateAdresses(){
-        List<ContaminationEntity> addresses = ContaminationRepository
+        List<ContaminationEntity> addresses = ContaminationRepository.getAllAddresses();
     }
     
 
