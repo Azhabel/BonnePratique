@@ -11,48 +11,34 @@ import java.util.Set;
 import java.util.UUID;
 
 
- 
+ @Entity
 public class DoctorEntity{
-    private TargetEntity user;
+  //   @OneToOne(mappedBy = "target")
+  //  private TargetEntity user;
     private String speciality;
     private UUID id;
-    
-    public DoctorEntity(String _speciality, UUID _id, String _firstname, String _name, Set<AddressEntity> _addresses ){
-        this.user = new TargetEntity();
-        this.user.setId(_id);
-        this.user.setFirstname(_firstname);
-        this.user.setName(_firstname);
-        this.user.setAddresses(_addresses);
-        this.speciality = _speciality; 
-    }
 
 
-    public Set<AddressEntity> getAddresses(){
-        return this.user.getAddresses();
-    }
-    
-    
+     public void setId(UUID id) {
+         this.id = id;
+     }
 
+     @Id
+     @GeneratedValue(generator = "UUID")
+     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+     @Column(name = "uuid", unique = true, nullable = false)
+     @Type(type = "pg-uuid")
     public UUID getId(){
         return this.id;
     }
 
-    public String getFirstname(){
-        return this.user.getFirstname();
-    }
+     public String getSpeciality() {
+         return speciality;
+     }
 
-    public String getName(){
-        return this.user.getName();
-    }
-
-    
-    public String getSpeciality(){
-        return speciality;
-    }
-
-    public void setSpecility(String _speciality){
-        this.speciality= _speciality;
-    }
+     public void setSpeciality(String speciality) {
+         this.speciality = speciality;
+     }
 
 
-}
+ }

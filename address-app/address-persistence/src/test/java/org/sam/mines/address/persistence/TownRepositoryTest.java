@@ -35,6 +35,7 @@ class TownRepositoryTest {
     @Autowired
     private DoctorRepository doctorRepository;
 
+
     @Autowired
     private ContaminationRepository ContaminationRepository;
 
@@ -43,10 +44,8 @@ class TownRepositoryTest {
         List<ContaminationEntity> all = ContaminationRepository.findAll();
     }
 
-    public void FindallContaminateAdresses(){
-        List<ContaminationEntity> addresses = ContaminationRepository.getAllAddresses();
-    }
-    
+
+
 
     @Test
     public void shouldFindAll() {

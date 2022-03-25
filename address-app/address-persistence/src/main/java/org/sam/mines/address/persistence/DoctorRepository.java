@@ -9,10 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Repository
 public interface DoctorRepository extends JpaRepository <DoctorEntity, UUID>{
 
-    
+    Set<DoctorEntity> findAllBySpeciality(String speciality);
 }

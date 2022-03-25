@@ -36,6 +36,13 @@ public class ContaminationEntity {
         this.person = _person;
     }
 
+    public Set<AddressEntity> getAddresses (){ return this.addresses; }
+
+    public void setAddresses(Set<AddressEntity> addresses) {
+        this.addresses = addresses;
+    }
+
+
     @ManyToMany
     @JoinTable(name = "Contamination", joinColumns = @JoinColumn(name = "address_uuid", referencedColumnName = "addresses"), inverseJoinColumns = @JoinColumn(name = "target_uuid", referencedColumnName = "person"))
     public Set<TargetEntity> getPerson() {
