@@ -17,14 +17,18 @@ public class DoctorEntity{
     private String speciality;
     private UUID id;
     
-    public DoctorEntity(String _speciality, UUID _id, String _firstname, String _name, Set<AddressEntity> addresses ){
-        this.user = new TargetEntity(_id,_firstame,_name,_addresses); 
+    public DoctorEntity(String _speciality, UUID _id, String _firstname, String _name, Set<AddressEntity> _addresses ){
+        this.user = new TargetEntity();
+        this.user.setId(_id);
+        this.user.setFirstname(_firstname);
+        this.user.setName(_firstname);
+        this.user.setAddresses(_addresses);
         this.speciality = _speciality; 
     }
 
 
     public Set<AddressEntity> getAddresses(){
-        return this.user.addresses;
+        return this.user.getAddresses();
     }
     
     
@@ -34,11 +38,11 @@ public class DoctorEntity{
     }
 
     public String getFirstname(){
-        return this.user.firstname;
+        return this.user.getFirstname();
     }
 
     public String getName(){
-        return this.user.name;
+        return this.user.getName();
     }
 
     

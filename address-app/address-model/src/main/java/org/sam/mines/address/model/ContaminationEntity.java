@@ -14,26 +14,30 @@ import java.util.UUID;
 public class ContaminationEntity {
     private Set<AddressEntity> addresses;
     private String disease;
-    private Set<TargerEntity> person;
+    private Set<TargetEntity> person;
 
-    public ContaminationEntity(String _disease, Set<AddressEntity> _addresses){
-        this.disease=_disease;
-        this.addresses=_addresses;
+
+    public ContaminationEntity(String _disease, Set<AddressEntity> _addresses) {
+        this.disease = _disease;
+        this.addresses = _addresses;
 
     }
-    public String getDisease(){
+
+    public String getDisease() {
         return this.disease;
     }
-    public void setDisease(String _disease){
+
+    public void setDisease(String _disease) {
         this.disease = _disease;
     }
 
-    public void setTargerEntity(Set<TargerEntity> _person){
+    public void setTargerEntity(Set<TargetEntity> _person) {
         this.person = _person;
     }
 
     @ManyToMany
     @JoinTable(name = "Contamination", joinColumns = @JoinColumn(name = "address_uuid", referencedColumnName = "addresses"), inverseJoinColumns = @JoinColumn(name = "target_uuid", referencedColumnName = "person"))
-    public TargerEntity getPerson(){
-        return person;
+    public Set<TargetEntity> getPerson() {
+        return this.person;
     }
+}

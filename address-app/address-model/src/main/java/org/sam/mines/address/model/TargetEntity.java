@@ -15,6 +15,7 @@ public class TargetEntity {
     private String name;
     private Set<AddressEntity> addresses;
 
+
     public void setId(UUID id) {
         this.id = id;
     }
