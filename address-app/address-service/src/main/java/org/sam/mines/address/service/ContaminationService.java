@@ -1,7 +1,6 @@
 package org.sam.mines.address.service;
 
 import org.sam.mines.address.model.ContaminationEntity;
-import org.sam.mines.address.model.TownEntity;
 
 import java.util.List;
 import java.util.Optional;

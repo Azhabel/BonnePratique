@@ -11,18 +11,24 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-
+@Entity
 public class ContaminationEntity {
-    private Set<AddressEntity> addresses;
+    @Id
+    @Column(name = "id", nullable = false)
+    private UUID id;
+
+//    private Set<AddressEntity> addresses;
     private String disease;
     private Set<TargetEntity> person;
 
-
-    public ContaminationEntity(String _disease, Set<AddressEntity> _addresses) {
-        this.disease = _disease;
-        this.addresses = _addresses;
-
+    public UUID getId() {
+        return id;
     }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
 
     public String getDisease() {
         return this.disease;
@@ -36,11 +42,12 @@ public class ContaminationEntity {
         this.person = _person;
     }
 
-    public Set<AddressEntity> getAddresses (){ return this.addresses; }
 
-    public void setAddresses(Set<AddressEntity> addresses) {
-        this.addresses = addresses;
-    }
+//    public Set<AddressEntity> getAddresses (){ return this.addresses; }
+//
+//    public void setAddresses(Set<AddressEntity> addresses) {c
+//        this.addresses = addresses;
+//    }
 
 
     @ManyToMany
