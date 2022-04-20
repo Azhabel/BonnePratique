@@ -18,6 +18,8 @@ public class ContaminationEntity {
     private UUID id;
     private String disease;
     private TargetEntity person;
+    @OneToOne
+    @JoinColumn(name = "address_uuid")
     private AddressEntity address;
 
     public UUID getId() {

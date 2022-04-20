@@ -20,7 +20,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-03-25T16:26:55.257364800+01:00[Europe/Paris]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-04-20T12:17:40.149924878+02:00[Europe/Paris]")
 @Validated
 @Api(value = "town", description = "the town API")
 public interface TownApi {
@@ -29,39 +29,7 @@ public interface TownApi {
         return Optional.empty();
     }
 
-    /**
-     * POST /town : Create a town
-     *
-     * @param town  (required)
-     * @return Null response (status code 201)
-     */
-
-    @ApiOperation(value = "Create a town", nickname = "create", notes = "", response = Town.class, tags={ "town", })
-    @ApiResponses(value = { 
-
-        @ApiResponse(code = 201, message = "Null response", response = Town.class) })
-    @RequestMapping(
-        method = RequestMethod.POST,
-        value = "/town",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    default ResponseEntity<Town> create(
-
-@ApiParam(value = "", required = true )   @Valid @RequestBody Town town) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"name\" : \"name\", \"postCode\" : \"postCode\", \"id\" : \"id\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
+    ResponseEntity<Town> create(Town town);
 
     /**
      * DELETE /town/{id} : Delete a town.
@@ -70,7 +38,7 @@ public interface TownApi {
      * @return Town has been deleted. (status code 204)
      */
 
-    @ApiOperation(value = "Delete a town.", nickname = "delete", notes = "", response = String.class, tags={ "town", })
+    @ApiOperation(value = "Delete a town.", nickname = "deleteTown", notes = "", response = String.class, tags={ "town", })
     @ApiResponses(value = { 
 
         @ApiResponse(code = 204, message = "Town has been deleted.", response = String.class) })
@@ -79,9 +47,39 @@ public interface TownApi {
         value = "/town/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<String> delete(@ApiParam(value = "", required = true) @PathVariable("id") String id
+    default ResponseEntity<String> deleteTown(@ApiParam(value = "", required = true) @PathVariable("id") String id
 
 ) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+
+    }
+
+
+    /**
+     * GET /town : List all towns
+     *
+     * @return An array of towns (status code 200)
+     */
+
+    @ApiOperation(value = "List all towns", nickname = "getAllTown", notes = "", response = Town.class, responseContainer = "List", tags={ "town", })
+    @ApiResponses(value = { 
+
+        @ApiResponse(code = 200, message = "An array of towns", response = Town.class, responseContainer = "List") })
+    @RequestMapping(
+        method = RequestMethod.GET,
+        value = "/town",
+        produces = { "application/json" }
+    )
+    default ResponseEntity<List<Town>> getAllTown() {
+        getRequest().ifPresent(request -> {
+            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
+                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
+                    String exampleString = "{ \"name\" : \"name\", \"postCode\" : \"\", \"id\" : \"\" }";
+                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
+                    break;
+                }
+            }
+        });
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 
     }
@@ -94,7 +92,7 @@ public interface TownApi {
      * @return Expected response to a valid request (status code 200)
      */
 
-    @ApiOperation(value = "Info for a specific town", nickname = "get", notes = "", response = Town.class, tags={ "town", })
+    @ApiOperation(value = "Info for a specific town", nickname = "getTownById", notes = "", response = Town.class, tags={ "town", })
     @ApiResponses(value = { 
 
         @ApiResponse(code = 200, message = "Expected response to a valid request", response = Town.class) })
@@ -103,13 +101,13 @@ public interface TownApi {
         value = "/town/{id}",
         produces = { "application/json" }
     )
-    default ResponseEntity<Town> get(@ApiParam(value = "The id of the town to retrieve", required = true) @PathVariable("id") String id
+    default ResponseEntity<Town> getTownById(@ApiParam(value = "The id of the town to retrieve", required = true) @PathVariable("id") String id
 
 ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"name\" : \"name\", \"postCode\" : \"postCode\", \"id\" : \"id\" }";
+                    String exampleString = "{ \"name\" : \"name\", \"postCode\" : \"\", \"id\" : \"\" }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -119,68 +117,5 @@ public interface TownApi {
 
     }
 
-
-    /**
-     * GET /town : List all towns
-     *
-     * @return An array of towns (status code 200)
-     */
-
-    @ApiOperation(value = "List all towns", nickname = "list", notes = "", response = Town.class, responseContainer = "List", tags={ "town", })
-    @ApiResponses(value = { 
-
-        @ApiResponse(code = 200, message = "An array of towns", response = Town.class, responseContainer = "List") })
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/town",
-        produces = { "application/json" }
-    )
-    default ResponseEntity<List<Town>> list() {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"name\" : \"name\", \"postCode\" : \"postCode\", \"id\" : \"id\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
-
-    /**
-     * PUT /town : Update a town
-     *
-     * @param town  (required)
-     * @return Null response (status code 200)
-     */
-
-    @ApiOperation(value = "Update a town", nickname = "update", notes = "", response = Town.class, tags={ "town", })
-    @ApiResponses(value = { 
-
-        @ApiResponse(code = 200, message = "Null response", response = Town.class) })
-    @RequestMapping(
-        method = RequestMethod.PUT,
-        value = "/town",
-        produces = { "application/json" },
-        consumes = { "application/json" }
-    )
-    default ResponseEntity<Town> update(
-
-@ApiParam(value = "", required = true )   @Valid @RequestBody Town town) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"name\" : \"name\", \"postCode\" : \"postCode\", \"id\" : \"id\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
+    ResponseEntity<Town> update(Town town);
 }

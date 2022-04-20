@@ -16,20 +16,20 @@ import javax.validation.constraints.*;
 import java.util.*;
 
 /**
- * Town
+ * Target
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-04-20T12:17:40.149924878+02:00[Europe/Paris]")
-public class Town   {
+public class Target   {
   @JsonProperty("id")
   private UUID id = null;
 
-  @JsonProperty("postCode")
-  private Integer postCode = null;
+  @JsonProperty("firstname")
+  private String firstname;
 
   @JsonProperty("name")
   private String name;
 
-  public Town id(UUID id) {
+  public Target id(UUID id) {
     this.id = id;
     return this;
   }
@@ -50,28 +50,28 @@ public class Town   {
     this.id = id;
   }
 
-  public Town postCode(Integer postCode) {
-    this.postCode = postCode;
+  public Target firstname(String firstname) {
+    this.firstname = firstname;
     return this;
   }
 
   /**
-   * Get postCode
-   * @return postCode
+   * Get firstname
+   * @return firstname
   */
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
 
-  public Integer getPostCode() {
-    return postCode;
+  public String getFirstname() {
+    return firstname;
   }
 
-  public void setPostCode(Integer postCode) {
-    this.postCode = postCode;
+  public void setFirstname(String firstname) {
+    this.firstname = firstname;
   }
 
-  public Town name(String name) {
+  public Target name(String name) {
     this.name = name;
     return this;
   }
@@ -101,24 +101,24 @@ public class Town   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Town town = (Town) o;
-    return Objects.equals(this.id, town.id) &&
-        Objects.equals(this.postCode, town.postCode) &&
-        Objects.equals(this.name, town.name);
+    Target target = (Target) o;
+    return Objects.equals(this.id, target.id) &&
+        Objects.equals(this.firstname, target.firstname) &&
+        Objects.equals(this.name, target.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, postCode, name);
+    return Objects.hash(id, firstname, name);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Town {\n");
+    sb.append("class Target {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    postCode: ").append(toIndentedString(postCode)).append("\n");
+    sb.append("    firstname: ").append(toIndentedString(firstname)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();

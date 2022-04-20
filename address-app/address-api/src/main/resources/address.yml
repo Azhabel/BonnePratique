@@ -10,7 +10,7 @@ paths:
   /town:
     get:
       summary: List all towns
-      operationId: list
+      operationId: getAllTown
       tags:
         - town
       responses:
@@ -22,46 +22,46 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Town'
-    post:
-      summary: Create a town
-      operationId: create
-      tags:
-        - town
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Town'
-      responses:
-        '201':
-          description: Null response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Town'
-    put:
-      summary: Update a town
-      operationId: update
-      tags:
-        - town
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Town'
-      responses:
-        '200':
-          description: Null response
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Town'
+#    post:
+#      summary: Create a town
+#      operationId: create
+#      tags:
+#        - town
+#      requestBody:
+#        required: true
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/Town'
+#      responses:
+#        '201':
+#          description: Null response
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '#/components/schemas/Town'
+#    put:
+#      summary: Update a town
+#      operationId: update
+#      tags:
+#        - town
+#      requestBody:
+#        required: true
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/Town'
+#      responses:
+#        '200':
+#          description: Null response
+#          content:
+#            application/json:
+#              schema:
+#                $ref: '#/components/schemas/Town'
   /town/{id}:
     get:
       summary: Info for a specific town
-      operationId: get
+      operationId: getTownById
       tags:
         - town
       parameters:
@@ -82,7 +82,7 @@ paths:
       tags:
         - town
       summary: Delete a town.
-      operationId: delete
+      operationId: deleteTown
       parameters:
         - in: path
           name: id
@@ -97,16 +97,94 @@ paths:
               schema:
                 type: string
                 description: ID of the deleted entity.
+  /contamination:
+    get:
+      summary: List all contaminations
+      operationId: getAllContamination
+      tags:
+        - contamination
+      responses:
+        '200':
+          description: An array of contaminations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contamination'
+  /contamination/{id}:
+    get:
+      summary: Info for a specific contamination
+      operationId: getContaminationById
+      tags:
+        - contamination
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The id of the contamination to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Contamination"
 components:
   schemas:
-    Town:
+    Contamination:
       required:
-        - name
-        - postCode
+        - disease
+        - person
+        - address
       properties:
         id:
           type: string
+        disease:
+          type: string
+        person:
+          type: array
+          items:
+            $ref: '#/components/schemas/Target'
+        address:
+          type: array
+          items:
+            $ref: '#/components/schemas/Address'
+    Town:
+      required:
+        - postCode
+        - name
+      properties:
+        id:
+          type: UUID
+        postCode:
+          type: int
         name:
           type: string
-        postCode:
+    Address :
+      required:
+        - number
+        - street
+        - town
+      properties:
+        id:
+          type: UUID
+        number:
+          type: int
+        street:
           type: string
+        town:
+          $ref: '#/components/schemas/Town'
+    Target :
+      required :
+        - firstname
+        - name
+      properties :
+        id :
+          type : UUID
+        firstname :
+          type : string
+        name :
+          type : string

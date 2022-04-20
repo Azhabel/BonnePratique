@@ -1,9 +1,9 @@
 package org.sam.mines.address.web.controller;
 
-import org.sam.mines.address.model.TownEntity;
-import org.sam.mines.address.service.TownService;
 import org.sam.mines.address.api.controller.TownApi;
 import org.sam.mines.address.api.model.Town;
+import org.sam.mines.address.model.TownEntity;
+import org.sam.mines.address.service.TownService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,14 +39,14 @@ public class TownController implements TownApi {
     }
 
     @Override
-    public ResponseEntity<String> delete(String id) {
+    public ResponseEntity<String> deleteTown(String id) {
         townService.delete(UUID.fromString(id));
 
         return ResponseEntity.ok(id);
     }
 
     @Override
-    public ResponseEntity<Town> get(String id) {
+    public ResponseEntity<Town> getTownById(String id) {
         try {
             UUID uuid = UUID.fromString(id);
 
@@ -61,7 +61,7 @@ public class TownController implements TownApi {
     }
 
     @Override
-    public ResponseEntity<List<Town>> list() {
+    public ResponseEntity<List<Town>> getAllTown() {
         return ResponseEntity.ok(townService.getAll().stream().map(this::map).collect(Collectors.toList()));
     }
 
@@ -79,18 +79,18 @@ public class TownController implements TownApi {
 
     private TownEntity map(Town town) {
         return TownEntity.TownBuilder.aTown()
-                .withId(town.getId() == null ? null : UUID.fromString(town.getId()))
+                .withId(town.getId() == null ? null : UUID.fromString(String.valueOf(town.getId())))
                 .withName(town.getName())
-                .withPostCode(Integer.parseInt(town.getPostCode()))
+                .withPostCode(Integer.parseInt(String.valueOf(town.getPostCode())))
                 .build();
     }
 
     private Town map(TownEntity town) {
 
         Town apiTown = new Town();
-        apiTown.setId(town.getId().toString());
+        apiTown.setId(UUID.fromString(town.getId().toString()));
         apiTown.setName(town.getName());
-        apiTown.setPostCode(String.valueOf(town.getPostCode()));
+        apiTown.setPostCode(town.getPostCode());
 
         return apiTown;
     }

@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
+import org.sam.mines.address.api.model.Town;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.time.OffsetDateTime;
 import javax.validation.Valid;
@@ -16,20 +17,23 @@ import javax.validation.constraints.*;
 import java.util.*;
 
 /**
- * Town
+ * Address
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2022-04-20T12:17:40.149924878+02:00[Europe/Paris]")
-public class Town   {
+public class Address   {
   @JsonProperty("id")
   private UUID id = null;
 
-  @JsonProperty("postCode")
-  private Integer postCode = null;
+  @JsonProperty("number")
+  private Integer number = null;
 
-  @JsonProperty("name")
-  private String name;
+  @JsonProperty("street")
+  private String street;
 
-  public Town id(UUID id) {
+  @JsonProperty("town")
+  private Town town;
+
+  public Address id(UUID id) {
     this.id = id;
     return this;
   }
@@ -50,46 +54,68 @@ public class Town   {
     this.id = id;
   }
 
-  public Town postCode(Integer postCode) {
-    this.postCode = postCode;
+  public Address number(Integer number) {
+    this.number = number;
     return this;
   }
 
   /**
-   * Get postCode
-   * @return postCode
+   * Get number
+   * @return number
   */
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
 
-  public Integer getPostCode() {
-    return postCode;
+  public Integer getNumber() {
+    return number;
   }
 
-  public void setPostCode(Integer postCode) {
-    this.postCode = postCode;
+  public void setNumber(Integer number) {
+    this.number = number;
   }
 
-  public Town name(String name) {
-    this.name = name;
+  public Address street(String street) {
+    this.street = street;
     return this;
   }
 
   /**
-   * Get name
-   * @return name
+   * Get street
+   * @return street
   */
   @ApiModelProperty(required = true, value = "")
   @NotNull
 
 
-  public String getName() {
-    return name;
+  public String getStreet() {
+    return street;
   }
 
-  public void setName(String name) {
-    this.name = name;
+  public void setStreet(String street) {
+    this.street = street;
+  }
+
+  public Address town(Town town) {
+    this.town = town;
+    return this;
+  }
+
+  /**
+   * Get town
+   * @return town
+  */
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  @Valid
+
+  public Town getTown() {
+    return town;
+  }
+
+  public void setTown(Town town) {
+    this.town = town;
   }
 
 
@@ -101,25 +127,27 @@ public class Town   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Town town = (Town) o;
-    return Objects.equals(this.id, town.id) &&
-        Objects.equals(this.postCode, town.postCode) &&
-        Objects.equals(this.name, town.name);
+    Address address = (Address) o;
+    return Objects.equals(this.id, address.id) &&
+        Objects.equals(this.number, address.number) &&
+        Objects.equals(this.street, address.street) &&
+        Objects.equals(this.town, address.town);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, postCode, name);
+    return Objects.hash(id, number, street, town);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Town {\n");
+    sb.append("class Address {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    postCode: ").append(toIndentedString(postCode)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    number: ").append(toIndentedString(number)).append("\n");
+    sb.append("    street: ").append(toIndentedString(street)).append("\n");
+    sb.append("    town: ").append(toIndentedString(town)).append("\n");
     sb.append("}");
     return sb.toString();
   }
