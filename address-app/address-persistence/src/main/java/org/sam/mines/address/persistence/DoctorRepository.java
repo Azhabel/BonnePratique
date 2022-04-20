@@ -16,4 +16,5 @@ import java.util.UUID;
 public interface DoctorRepository extends JpaRepository <DoctorEntity, UUID>{
 
     Set<DoctorEntity> findAllBySpeciality(String speciality);
+    //test
 }

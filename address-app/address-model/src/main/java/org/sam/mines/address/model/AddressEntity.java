@@ -14,7 +14,7 @@ public class AddressEntity {
     private int number;
     private String street;
     private TownEntity town;
-    private Set<TargetEntity> targets;
+
 
     public void setId(UUID id) {
         this.id = id;
@@ -56,13 +56,4 @@ public class AddressEntity {
         this.town = town;
     }
 
-    @ManyToMany
-    @JoinTable(name = "targetaddress", joinColumns = @JoinColumn(name = "address_uuid", referencedColumnName = "uuid"), inverseJoinColumns = @JoinColumn(name = "target_uuid", referencedColumnName = "uuid"))
-    public Set<TargetEntity> getTargets() {
-        return targets;
-    }
-
-    public void setTargets(Set<TargetEntity> targets) {
-        this.targets = targets;
-    }
 }

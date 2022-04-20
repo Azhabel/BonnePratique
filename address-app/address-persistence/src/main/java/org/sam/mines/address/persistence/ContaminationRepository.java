@@ -12,4 +12,6 @@ import java.util.UUID;
 public interface ContaminationRepository extends JpaRepository <ContaminationEntity, UUID>{
 
     List<ContaminationEntity> getAllAddresses();
+
+
 }

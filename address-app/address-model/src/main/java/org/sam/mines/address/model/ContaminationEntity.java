@@ -16,10 +16,9 @@ public class ContaminationEntity {
     @Id
     @Column(name = "id", nullable = false)
     private UUID id;
-
-//    private Set<AddressEntity> addresses;
     private String disease;
-    private Set<TargetEntity> person;
+    private TargetEntity person;
+    private AddressEntity address;
 
     public UUID getId() {
         return id;
@@ -38,7 +37,7 @@ public class ContaminationEntity {
         this.disease = _disease;
     }
 
-    public void setTargerEntity(Set<TargetEntity> _person) {
+    public void setTargetEntity(TargetEntity _person) {
         this.person = _person;
     }
 
@@ -52,8 +51,15 @@ public class ContaminationEntity {
 
     @ManyToMany
     @JoinTable(name = "Contamination", joinColumns = @JoinColumn(name = "address_uuid", referencedColumnName = "addresses"), inverseJoinColumns = @JoinColumn(name = "target_uuid", referencedColumnName = "person"))
-    public Set<TargetEntity> getPerson() {
+    public TargetEntity getPerson() {
         return this.person;
     }
 
+    public AddressEntity getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressEntity address) {
+        this.address = address;
+    }
 }

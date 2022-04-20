@@ -13,7 +13,7 @@ public class TargetEntity {
     private UUID id;
     private String firstname;
     private String name;
-    private Set<AddressEntity> addresses;
+
 
 
     public void setId(UUID id) {
@@ -47,12 +47,4 @@ public class TargetEntity {
         this.name = name;
     }
 
-    @ManyToMany(mappedBy = "targets")
-    public Set<AddressEntity> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Set<AddressEntity> addresses) {
-        this.addresses = addresses;
-    }
 }

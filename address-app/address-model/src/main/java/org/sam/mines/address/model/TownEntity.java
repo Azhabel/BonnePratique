@@ -16,7 +16,6 @@ public class TownEntity {
     private UUID id;
     private int postCode;
     private String name;
-    private Set<AddressEntity> addresses;
 
     public void setId(UUID id) {
         this.id = id;
@@ -51,14 +50,6 @@ public class TownEntity {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "town")
-    public Set<AddressEntity> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(Set<AddressEntity> addresses) {
-        this.addresses = addresses;
-    }
 
 
     public static final class TownBuilder {
@@ -99,7 +90,6 @@ public class TownEntity {
             town.setId(id);
             town.setPostCode(postCode);
             town.setName(name);
-            town.setAddresses(addresses);
             return town;
         }
     }
